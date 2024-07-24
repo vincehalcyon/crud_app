@@ -1,32 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import apiInstance from "@/config/axios";
+import { FaPaperPlane } from "react-icons/fa";
 
 export default function HomePage() {
-  const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-
-  const fetchUserDetails = async () => {
-    try {
-      const response = await fetch("http://localhost:3333/api/me");
-      console.log("response", response);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      console.log("data", data);
-      setUser(data);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Use useEffect to fetch user details on component mount
-  useEffect(() => {
-    fetchUserDetails();
-  }, []);
-
   return (
     <>
       <section>
@@ -39,12 +16,16 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-w-[1142px] w-full lg:mx-auto px-5 pt-[50px]">
-          <div>
+          <div className="flex flex-col w-full">
             <textarea
               rows="4"
               className="resize-none rounded-md border border-primary w-full"
             ></textarea>
-            <button>Post</button>
+            <div className="flex justify-end pt-2">
+              <button className="bg-primary px-3 py-1 text-white border border-primary hover:border-primary hover:bg-transparent hover:text-primary text-sm rounded-sm">
+                <FaPaperPlane />
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -14,6 +14,7 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+
   const handleSubmit = async (e) => {
     console.log("ssss");
     e.preventDefault();
@@ -23,7 +24,7 @@ export default function LoginPage() {
     try {
       const response = await apiInstance.post("/api/login", {
         email: username,
-        password: password,
+        password: password, 
       });
 
       console.log("response", response);
